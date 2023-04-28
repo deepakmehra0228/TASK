@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <title>Cookies Example</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 30px;
+		}
+
+		label {
+			display: block;
+			margin-top: 20px;
+		}
+
+		input[type="text"] {
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			width: 300px;
+			font-size: 16px;
+			margin-top: 10px;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			border-radius: 5px;
+			padding: 10px 20px;
+			border: none;
+			font-size: 16px;
+			cursor: pointer;
+			margin-top: 20px;
+			margin-right: 10px;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+    <script id="cookiezen" type="text/javascript" src="https://local.test/embed/b304356f90263bb1f840d531f08dbc23/script.js" defer></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T64CLVJ');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "gbnyvrindf");
+
+          // function to delete the cookie
+async function deleteCookie() {
+
+
+    document.cookie = cookieName.value + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    console.log(document.cookie);
+
+
+}
+
+// function to add the cookie
+function addCookie() {
+    document.cookie = cookieName.value + '=true;';
+    console.log('Cookie added!');
+}
+
+// function to print all the cookies
+function printCookies() {
+    console.log(document.cookie);
+}
+
+// event listener for the deleteCookieBtn button
+document.getElementById('deleteCookieBtn').addEventListener('click', deleteCookie);
+
+// event listener for the addCookieBtn button
+document.getElementById('addCookieBtn').addEventListener('click', addCookie);
+
+// event listener for the window load event
+window.addEventListener('load', function() {
+    // check if localStorage is supported by the browser
+    if (typeof(Storage) !== "undefined") {
+        // if localStorage is supported, check if cookies are stored in localStorage
+        if (localStorage.getItem("cookies")) {
+            // if cookies are stored in localStorage, parse the JSON data and set the cookies
+            var cookies = JSON.parse(localStorage.getItem("cookies"));
+            for (var cookie in cookies) {
+                document.cookie = cookie + '=' + cookies[cookie] + ';';
+            }
+        }
+    }
+});
+
+// event listener for the window unload event
+window.addEventListener('unload', function() {
+    // check if localStorage is supported by the browser
+    if (typeof(Storage) !== "undefined") {
+        // if localStorage is supported, store the cookies in localStorage
+        var cookies = {};
+        var cookieList = document.cookie.split(';');
+        for (var i = 0; i < cookieList.length; i++) {
+            var cookie = cookieList[i].trim().split('=');
+            cookies[cookie[0]] = cookie[1];
+        }
+        localStorage.setItem("cookies", JSON.stringify(cookies));
+    }
+});
+    </script>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T64CLVJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <!-- <form action="/delete-cookie" method="post"> -->
+    <label for="cookieName">Cookie Name:</label>
+    <input type="text" id="cookieName" name="cookieName">
+
+    <button  id="deleteCookieBtn" onclick="deleteCookie()">Delete Cookies</button>
+    <button action = "/add-cookie" id="addCookieBtn" onclick="addCookie()">Add Cookies</button>
+<!-- </form> -->
+
+    <iframe src="https://www.w3schools.com" title="W3Schools Free Tutorials"></iframe>
+  
+
+
+</body>
+</html>
+
+
